@@ -1,0 +1,7 @@
+{
+  "name": "TripRecorder",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
