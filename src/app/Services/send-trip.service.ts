@@ -25,7 +25,7 @@ export class TravelService {
   }
 
   private TransformToDisplayResults(data: mdlTrip): mdlTripResults {
-    this.logresult(data);
+    //this.logresult(data);
     return {
       user: data.userName,
       travelDate: data.travelDate,
@@ -33,13 +33,15 @@ export class TravelService {
       travelTime: data.travelTime,
       googleTravelTime: data.googleTravelTime,
       fromAddress: data.startPoint.address,
-      toAddress: data.endPoint.address
+      toAddress: data.endPoint.address,
+      fromTime: data.startPoint.tpDate,
+      toTime: data.endPoint.tpDate
     };
   }
 
-  private logresult(data: mdlTrip) {
-    console.log("*********** raw data ***********");
-    console.log(data);
-    console.log("*********** raw data ***********");
-  }
+  // private logresult(data: mdlTrip) {
+  //   console.log("*********** raw data ***********");
+  //   console.log(data);
+  //   console.log("*********** raw data ***********");
+  // }
 }

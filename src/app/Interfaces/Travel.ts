@@ -26,6 +26,8 @@ export class mdlTripResults
     travelTime: number;
     googleTravelTime: number;
     fromAddress: string;
+    fromTime: string;
     toAddress: string;
+    toTime: string
 }
 

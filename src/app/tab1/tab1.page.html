@@ -16,12 +16,14 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-card *ngIf="!isStarted && !isEnded">
-          <ion-card-header>
-            <ion-card-title>Record my trip</ion-card-title>
-          </ion-card-header>
+        <ion-card *ngIf="!isStarted && !isLoaded" class="startcard">
           <ion-card-content>
-            <ion-button expand="block" (click)="StartTrip();">Start my trip</ion-button>
+            <img
+              src="https://i.pinimg.com/474x/b3/2a/88/b32a881607add57acd3b459a3d7a02f8.jpg"
+            />
+            <ion-button expand="block" (click)="StartTrip();"
+              >Start my trip</ion-button
+            >
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -29,9 +31,14 @@
 
     <ion-row>
       <ion-col>
-        <ion-card *ngIf="isStarted">
+        <ion-card *ngIf="isStarted" class="startcard">
           <ion-card-content>
-            <ion-button expand="block" (click)="LogTrip();">End my trip</ion-button>
+            <img
+              src="https://cdn.dribbble.com/users/472667/screenshots/5563563/driving-test-custom-illustration.png"
+            />
+            <ion-button expand="block" (click)="LogTrip();"
+              >End my trip</ion-button
+            >
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -39,43 +46,48 @@
 
     <ion-row>
       <ion-col>
-        <ion-card  *ngIf="isLoaded">
-          <ion-card-header>
-            <ion-card-title>Trip results</ion-card-title>
-          </ion-card-header>
-          <ion-grid>
+        <ion-card *ngIf="isLoaded">
+          <ion-grid>  
+            <br />
             <ion-row>
               <ion-col>From: </ion-col>
+              <ion-col class="displayfield"
+                >{{TripResults.fromAddress}}</ion-col>
             </ion-row>
             <ion-row>
-              <ion-col class="displayfield">{{TripResults.fromAddress}}</ion-col>
+              <ion-col>Start </ion-col>
+              <ion-col class="displayfield">{{TripResults.fromTime}}</ion-col>
             </ion-row>
+            <ion-item-divider></ion-item-divider>
             <ion-row>
               <ion-col>To : </ion-col>
-            </ion-row>
-            <ion-row>
               <ion-col class="displayfield">{{TripResults.toAddress}}</ion-col>
             </ion-row>
             <ion-row>
-              <ion-col>Time travelled : </ion-col>
+              <ion-col>End : </ion-col>
+              <ion-col class="displayfield">{{TripResults.fromTime}}</ion-col>
             </ion-row>
+            <ion-item-divider></ion-item-divider>
             <ion-row>
-              <ion-col class="displayfield">{{TripResults.travelTime}}</ion-col>
+              <ion-col>Time travelled : </ion-col>
+              <ion-col class="displayfield"
+                >{{TripResults.travelTime}} minutes</ion-col
+              >
             </ion-row>
             <ion-row>
               <ion-col>Distance travelled : </ion-col>
+              <ion-col class="displayfield"
+                >{{TripResults.travelDistance/1000}} KM</ion-col
+              >
             </ion-row>
+            <ion-item-divider></ion-item-divider>
             <ion-row>
-              <ion-col class="displayfield">{{TripResults.travelDistance/1000}} KM</ion-col>
+              <ion-col
+                ><ion-button expand="block" (click)="NewTrip();"
+                  >New trip</ion-button
+                ></ion-col
+              >
             </ion-row>
-
-            <ion-row>
-              <ion-col> <hr/></ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col><ion-button expand="block" (click)="NewTrip();">New trip</ion-button></ion-col>
-            </ion-row>
-            
           </ion-grid>
         </ion-card>
       </ion-col>
