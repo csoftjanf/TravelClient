@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Trip Recorder
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,76 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Trip recorder for {{myname}}</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card *ngIf="!isStarted && !isEnded">
+          <ion-card-header>
+            <ion-card-title>Record my trip</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-button expand="block" (click)="StartTrip();">Start my trip</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-card *ngIf="isStarted">
+          <ion-card-content>
+            <ion-button expand="block" (click)="LogTrip();">End my trip</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-card  *ngIf="isLoaded">
+          <ion-card-header>
+            <ion-card-title>Trip results</ion-card-title>
+          </ion-card-header>
+          <ion-grid>
+            <ion-row>
+              <ion-col>From: </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="displayfield">{{TripResults.fromAddress}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>To : </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="displayfield">{{TripResults.toAddress}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>Time travelled : </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="displayfield">{{TripResults.travelTime}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>Distance travelled : </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="displayfield">{{TripResults.travelDistance/1000}} KM</ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col> <hr/></ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col><ion-button expand="block" (click)="NewTrip();">New trip</ion-button></ion-col>
+            </ion-row>
+            
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
